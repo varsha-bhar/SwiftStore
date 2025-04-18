@@ -66,4 +66,23 @@ TOTAL: $7.97
 """
         XCTAssertEqual(expectedReceipt, receipt.output())
     }
+    
+    func testOne() {
+        let register = Register()
+        let pencil = Item(name: "Pencil", priceEach: 99)
+
+        register.scan(pencil)
+        XCTAssertEqual(register.subtotal(), 99)
+
+        let receipt = register.total()
+        XCTAssertEqual(receipt.total(), 99)
+
+        let expectedOutput = """
+Receipt:
+Pencil: $0.99
+------------------
+TOTAL: $0.99
+"""
+        XCTAssertEqual(receipt.output(), expectedOutput)
+    }
 }
