@@ -39,10 +39,12 @@ class Receipt {
     
     func output() -> String {
         var result = "Receipt:"
+        
         for item in scannedItems {
             let formattedPrice = String(format: "$%.2f", Double(item.price()) / 100.0)
             result += "\n\(item.name): \(formattedPrice)"
         }
+        
         result += "\n------------------"
         result += "\nTOTAL: \(String(format: "$%.2f", Double(total()) / 100.0))"
         return result
@@ -63,7 +65,7 @@ class Register {
 
     func total() -> Receipt {
         let finalReceipt = receipt
-        receipt = Receipt()  // Reset for next customer
+        receipt = Receipt()
         return finalReceipt
     }
 }
